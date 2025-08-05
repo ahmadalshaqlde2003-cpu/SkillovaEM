@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register New Account | Skillova Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --danger-color: #ef4444;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --text-color: #334155;
+            --text-light: #64748b;
+            --border-radius: 12px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-bg: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f8f9fa;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #26282e;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .logo span {
+                color: var(--secondary-color);
+                margin-left: 5px;
+            }
+
+            .logo::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background: var(--gradient-primary);
+                transition: var(--transition-fast);
+            }
+
+            .logo:hover::after {
+                width: 100%;
+            }
+
+        /* Left Side - Branding */
+        .branding-side {
+            flex: 1;
+            background: var(--gradient-bg);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .branding-side::before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 200px;
+                height: 200px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+            }
+
+            .branding-side::after {
+                content: '';
+                position: absolute;
+                bottom: -80px;
+                left: -80px;
+                width: 250px;
+                height: 250px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 50%;
+            }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+            .logo i {
+                margin-right: 10px;
+                color: var(--accent-color);
+            }
+
+        .branding-content {
+            z-index: 1;
+        }
+
+            .branding-content h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+
+            .branding-content p {
+                opacity: 0.9;
+                margin-bottom: 30px;
+            }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+            .benefits-list li {
+                margin-bottom: 15px;
+                display: flex;
+                align-items: flex-start;
+            }
+
+            .benefits-list i {
+                color: var(--accent-color);
+                margin-right: 10px;
+                margin-top: 3px;
+            }
+
+        /* Right Side - Forms */
+        .form-side {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container {
+            margin-bottom: 30px;
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+            .form-header h2 {
+                font-size: 1.8rem;
+                color: var(--dark-color);
+                margin-bottom: 10px;
+                font-weight: 700;
+            }
+
+            .form-header p {
+                color: var(--text-light);
+            }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: var(--dark-color);
+                font-size: 0.95rem;
+            }
+
+                .form-group label.required::after {
+                    content: ' *';
+                    color: var(--danger-color);
+                }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: #f8fafc;
+        }
+
+            .form-control:focus {
+                outline: none;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+                background: white;
+            }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+            .input-with-icon i {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--text-light);
+                cursor: pointer;
+            }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+            .btn-primary:hover {
+                background: var(--primary-dark);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+            .btn-secondary:hover {
+                background: #0d9f6e;
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+            .form-footer a {
+                color: var(--primary-color);
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+                .form-footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Password Strength Meter */
+        .password-strength {
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .password-strength::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 0;
+                background: var(--danger-color);
+                transition: width 0.3s ease;
+            }
+
+            .password-strength.weak::before {
+                width: 30%;
+                background: var(--danger-color);
+            }
+
+            .password-strength.medium::before {
+                width: 60%;
+                background: var(--accent-color);
+            }
+
+            .password-strength.strong::before {
+                width: 100%;
+                background: var(--secondary-color);
+            }
+
+        .strength-text {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .branding-side {
+                padding: 30px;
+            }
+
+            .form-side {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .branding-side {
+                display: none;
+            }
+
+            .form-side {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="skillova.html" class="logo">Skill<span>ova</span></a>
+
+
+
+            <div class="main-container">
+                <!-- Left Side - Branding -->
+                <div class="branding-side">
+                    <div class="logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Skillova</span>
+                    </div>
+                    <div class="branding-content">
+                        <h1>Join Our Learning Community</h1>
+                        <p>Create your account to access premium courses and start your learning journey today.</p>
+                        <ul class="benefits-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Access to 100+ professional courses</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Personalized learning dashboard</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Certificate upon completion</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>24/7 learning support</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Side - Forms -->
+                <div class="form-side">
+                    <!-- Registration Form -->
+                    <div class="form-container">
+                        <div class="form-header">
+                            <h2>Create Your Account</h2>
+                            <p>Fill in your details to get started</p>
+                        </div>
+
+                        <form id="registrationForm">
+                            <div class="form-group">
+                                <label for="name" class="required">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="required">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="required">Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="password" name="password" class="form-control" placeholder="At least 8 characters" required oninput="checkPasswordStrength(this.value)" />
+                                    <i class="fas fa-eye" id="togglePassword"></i>
+                                </div>
+                                <div class="password-strength" id="passwordStrength"></div>
+                                <div class="strength-text" id="strengthText">Password strength</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="required">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="07" required />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" class="form-control">
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                    <option value="Prefer not to say">Prefer not to say</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="country" class="required">Country</label>
+
+                                <select id="country" name="country" class="form-control" required>
+
+                                    <option value="">Select Country</option>
+                                    <option value="Jordan">Jordan</option>
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                    <option value="Egypt">Egypt</option>
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                    <option value="Lebanon">Lebanon</option>
+                                    <option value="Palestine">Palestine</option>
+                                    <option value="Morocco">Morocco</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus"></i> Create Account
+                            </button>
+
+                            <div class="form-footer">
+                                Already have an account? <a href="login.html">Sign in</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Success Modal -->
+            <div class="modal" id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; z-index: 1000;">
+                <div class="modal-content" style="background-color: white; padding: 40px; border-radius: var(--border-radius); text-align: center; width: 90%; max-width: 400px; box-shadow: var(--shadow-xl); animation: fadeInUp 0.5s ease forwards;">
+                    <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; color: var(--dark-color); margin-bottom: 15px; font-weight: 700;">Registration Successful!</h3>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">Your account has been created successfully. You can now access all our courses.</p>
+                    <button id="goToCoursesBtn" style="background: var(--primary-color); color: white; border: none; padding: 12px 24px; border-radius: var(--border-radius); font-weight: 600; cursor: pointer; transition: var(--transition); width: 100%;">
+                        <i class="fas fa-arrow-right"></i> Continue to Courses
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                // Password Strength Checker
+                function checkPasswordStrength(password) {
+                    const strengthBar = document.getElementById('passwordStrength');
+                    const strengthText = document.getElementById('strengthText');
+
+                    // Reset classes
+                    strengthBar.className = 'password-strength';
+
+                    if (password.length === 0) {
+                        strengthText.textContent = 'Password strength';
+                        return;
+                    }
+
+                    // Calculate strength
+                    let strength = 0;
+
+                    // Length check
+                    if (password.length > 7) strength++;
+                    if (password.length > 11) strength++;
+
+                    // Character variety checks
+                    if (/[A-Z]/.test(password)) strength++;
+                    if (/[0-9]/.test(password)) strength++;
+                    if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+                    // Update UI
+                    if (strength <= 2) {
+                        strengthBar.classList.add('weak');
+                        strengthText.textContent = 'Weak';
+                        strengthText.style.color = 'var(--danger-color)';
+                    } else if (strength <= 4) {
+                        strengthBar.classList.add('medium');
+                        strengthText.textContent = 'Medium';
+                        strengthText.style.color = 'var(--accent-color)';
+                    } else {
+                        strengthBar.classList.add('strong');
+                        strengthText.textContent = 'Strong';
+                        strengthText.style.color = 'var(--secondary-color)';
+                    }
+                }
+
+                // Toggle Password Visibility
+                document.getElementById('togglePassword').addEventListener('click', function () {
+                    const passwordInput = document.getElementById('password');
+                    const icon = this;
+
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+
+                // Form Submission
+                document.getElementById('registrationForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Show loading state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    submitBtn.disabled = true;
+
+                    // Simulate registration processing
+                    setTimeout(() => {
+                        // Show success modal
+                        document.getElementById('successModal').style.display = 'flex';
+
+                        // Reset form
+                        submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+
+                // Redirect to courses
+                document.getElementById('goToCoursesBtn').addEventListener('click', function () {
+                    window.location.href = 'courses.html';
+                });
+            </script>
+
+</body>
+</html>

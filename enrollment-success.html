@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enrollment Success</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f8ff;
+            color: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-home {
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+            .btn-home:hover {
+                background-color: #2980b9;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enrollment Successful!</h1>
+        <p id="message">Thank you for enrolling.</p>
+        <a href="courses.html" class="btn-home">Back to Courses</a>
+
+    </div>
+
+    <script>
+        // Function to get query parameter by name
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const courseName = getQueryParam('course');
+        const messageEl = document.getElementById('message');
+
+        if (courseName) {
+            // Decode URI component to get spaces and special chars back
+            const decodedCourseName = decodeURIComponent(courseName);
+            messageEl.textContent = `Thank you for enrolling in the "${decodedCourseName}" course. We will contact you soon!`;
+        } else {
+            messageEl.textContent = 'Thank you for enrolling. We will contact you soon!';
+        }
+    </script>
+</body>
+</html>

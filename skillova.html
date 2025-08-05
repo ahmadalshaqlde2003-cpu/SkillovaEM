@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skillova Academy | Professional Online Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --primary-dark: #1e40af;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --danger-color: #ef4444;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --text-color: #334155;
+            --text-light: #64748b;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color), #059669);
+            --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-smooth: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-color);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            padding: 15px 0;
+        }
+
+            .navbar.scrolled {
+                padding: 12px 0;
+                box-shadow: var(--shadow-md);
+                backdrop-filter: blur(12px);
+            }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .logo span {
+                color: var(--secondary-color);
+                margin-left: 5px;
+            }
+
+            .logo::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background: var(--gradient-primary);
+                transition: var(--transition-fast);
+            }
+
+            .logo:hover::after {
+                width: 100%;
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+            .nav-links a {
+                position: relative;
+                color: var(--dark-color);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1rem;
+                letter-spacing: 0.5px;
+                transition: var(--transition-fast);
+                padding: 5px 0;
+            }
+
+                .nav-links a::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 2px;
+                    background: var(--gradient-primary);
+                    transition: var(--transition-fast);
+                    border-radius: 2px;
+                }
+
+                .nav-links a:hover::before {
+                    width: 100%;
+                }
+
+                .nav-links a:hover {
+                    color: var(--primary-color);
+                }
+
+                .nav-links a.active {
+                    color: var(--primary-color);
+                }
+
+                    .nav-links a.active::before {
+                        width: 100%;
+                    }
+
+        /* زر الدخول فقط */
+        .auth-buttons {
+            margin-left: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-fast);
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-outline {
+            background: #e3eeff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #1e3a8a);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-primary);
+            color: white;
+            margin-top: 80px;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80') center/cover no-repeat;
+                opacity: 0.1;
+                z-index: 0;
+            }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 0 30px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Enhanced Offers Section */
+        .offers {
+            padding: 100px 0;
+            background-color: #f9fafb;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+
+            .section-title p {
+                color: var(--text-light);
+                font-size: 1.1rem;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .section-title .divider {
+                width: 80px;
+                height: 4px;
+                background: var(--gradient-primary);
+                margin: 20px auto;
+                border-radius: 2px;
+            }
+
+        /* Countdown Timer Styles */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto 40px;
+            gap: 10px;
+        }
+
+        .countdown-box {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .countdown-separator {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0 5px;
+            position: relative;
+            top: -5px;
+        }
+
+        /* Offers Grid */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .offer-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+            .offer-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .offer-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+            animation: pulse 1.5s infinite;
+        }
+
+        .offer-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .offer-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: var(--transition-smooth);
+            }
+
+        .offer-card:hover .offer-img img {
+            transform: scale(1.1);
+        }
+
+        .offer-details {
+            padding: 25px;
+        }
+
+        .offer-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .offer-desc {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .offer-meta {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .offer-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+            .offer-rating i {
+                color: var(--accent-color);
+            }
+
+        .offer-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+
+        .discount {
+            background: #dcfce7;
+            color: #166534;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            height: 8px;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: var(--gradient-secondary);
+            height: 100%;
+            border-radius: 10px;
+            position: relative;
+        }
+
+            .progress-bar::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: -3px;
+                width: 14px;
+                height: 14px;
+                background: var(--secondary-color);
+                border-radius: 50%;
+                border: 2px solid white;
+            }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--danger-color);
+            margin-top: 8px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .offer-btn {
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Contact Section - Enhanced */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light-color);
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            margin-bottom: 40px;
+        }
+
+            .contact-info h3 {
+                font-size: 1.8rem;
+                color: var(--primary-color);
+                margin-bottom: 25px;
+                position: relative;
+                padding-bottom: 15px;
+                font-weight: 700;
+            }
+
+                .contact-info h3::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 60px;
+                    height: 3px;
+                    background: var(--gradient-primary);
+                    border-radius: 3px;
+                }
+
+            .contact-info p {
+                margin-bottom: 25px;
+                color: var(--text-light);
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            transition: var(--transition-fast);
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+            .contact-item.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .contact-item:hover {
+                transform: translateX(5px);
+            }
+
+        .contact-icon {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-right: 20px;
+            margin-top: 3px;
+            min-width: 24px;
+            transition: var(--transition-fast);
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.2);
+        }
+
+        .contact-text h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-text p {
+            margin-bottom: 0;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-smooth);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+            .contact-form.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .contact-form:hover {
+                box-shadow: var(--shadow-lg);
+            }
+
+            .contact-form h3 {
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                margin-bottom: 25px;
+                font-weight: 700;
+            }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: 600;
+                color: var(--primary-color);
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 14px 18px;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                font-family: 'Poppins', sans-serif;
+                font-size: 1rem;
+                transition: var(--transition-fast);
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    border-color: var(--secondary-color);
+                    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+                    outline: none;
+                }
+
+            .form-group textarea {
+                min-height: 150px;
+                resize: vertical;
+            }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            width: 100%;
+            box-shadow: var(--shadow-md);
+        }
+
+            .submit-btn:hover {
+                background: linear-gradient(135deg, var(--primary-dark), #1e3a8a);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 80px 0 40px;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+            .footer-col h3::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 50px;
+                height: 3px;
+                background: var(--secondary-color);
+                border-radius: 3px;
+            }
+
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+            .footer-links li {
+                margin-bottom: 12px;
+            }
+
+            .footer-links a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                transition: var(--transition-fast);
+                display: inline-block;
+                position: relative;
+            }
+
+                .footer-links a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background: var(--secondary-color);
+                    transition: var(--transition-fast);
+                }
+
+                .footer-links a:hover {
+                    color: white;
+                    transform: translateX(5px);
+                }
+
+                    .footer-links a:hover::after {
+                        width: 100%;
+                    }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+            .social-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                color: white;
+                font-size: 1.2rem;
+                transition: var(--transition-fast);
+            }
+
+                .social-links a:hover {
+                    background: var(--secondary-color);
+                    transform: translateY(-3px);
+                }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced Chatbot Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 10000;
+            background: var(--gradient-primary);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+            animation: float 3s ease-in-out infinite;
+        }
+
+            #chatbot-container:hover {
+                background: var(--primary-dark);
+                transform: scale(1.1) translateY(-5px);
+                box-shadow: 0 10px 30px rgba(26, 42, 74, 0.3);
+            }
+
+            #chatbot-container i {
+                color: white;
+                font-size: 1.8rem;
+                transition: var(--transition-fast);
+            }
+
+            #chatbot-container:hover i {
+                transform: scale(1.1);
+            }
+
+        #chatbot-box {
+            display: none;
+            position: fixed;
+            bottom: 120px;
+            right: 40px;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: var(--shadow-xl);
+            z-index: 10000;
+            overflow: hidden;
+            flex-direction: column;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+            #chatbot-box.active {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            #chatbot-box header {
+                background: var(--gradient-primary);
+                color: white;
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+                #chatbot-box header span {
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                }
+
+                #chatbot-box header button {
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 1.3rem;
+                    cursor: pointer;
+                    padding: 5px;
+                    transition: var(--transition-fast);
+                }
+
+                    #chatbot-box header button:hover {
+                        transform: rotate(90deg);
+                    }
+
+            #chatbot-box .chat-content {
+                flex: 1;
+                padding: 20px;
+                overflow-y: auto;
+                background: #f8f9fa;
+                scroll-behavior: smooth;
+            }
+
+        .chat-message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            animation: fadeInUp 0.3s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message p {
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            animation: messageIn 0.3s ease forwards;
+        }
+
+        .bot-message {
+            background: white;
+            color: var(--text-color);
+            border-top-left-radius: 5px !important;
+            margin-right: auto;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .user-message {
+            background: var(--primary-color);
+            color: white;
+            border-top-right-radius: 5px !important;
+            margin-left: auto;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        #chatbot-box .chat-input {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+            #chatbot-box .chat-input input {
+                flex: 1;
+                padding: 14px 18px;
+                border: 1px solid #e0e0e0;
+                border-radius: 30px;
+                outline: none;
+                font-size: 0.95rem;
+                transition: var(--transition-fast);
+            }
+
+                #chatbot-box .chat-input input:focus {
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+                }
+
+            #chatbot-box .chat-input button {
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                margin-left: 15px;
+                cursor: pointer;
+                transition: var(--transition-fast);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+            }
+
+                #chatbot-box .chat-input button:hover {
+                    background: var(--primary-dark);
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+                }
+
+                #chatbot-box .chat-input button i {
+                    font-size: 1.3rem;
+                }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 25px;
+            }
+
+            .auth-buttons {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+                margin-top: 70px;
+            }
+
+                .hero h1 {
+                    font-size: 2.8rem;
+                }
+
+                .hero p {
+                    font-size: 1.15rem;
+                }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            #chatbot-box {
+                width: 90%;
+                right: 5%;
+                bottom: 100px;
+                height: 60vh;
+            }
+
+            .countdown-box {
+                padding: 12px 15px;
+                min-width: 70px;
+            }
+
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+
+            .countdown-label {
+                font-size: 0.75rem;
+            }
+
+            .countdown-separator {
+                font-size: 1.5rem;
+                top: -3px;
+            }
+
+            .current-price {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            #chatbot-container {
+                width: 60px;
+                height: 60px;
+                bottom: 30px;
+                right: 20px;
+            }
+
+            .countdown-container {
+                gap: 5px;
+            }
+
+            .countdown-box {
+                padding: 10px 12px;
+                min-width: 60px;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.65rem;
+            }
+
+            .countdown-separator {
+                font-size: 1.2rem;
+                top: -2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Skill<span>ova</span></a>
+
+            <div class="nav-links">
+                <a href="skillova.html" class="active">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="#">Instructors</a>
+                <a href="#">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="auth-buttons">
+                <a href="form.html" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Career With Expert-Led Training</h1>
+            <p>
+                Join thousands of professionals who have accelerated their careers with our
+                industry-recognized courses and hands-on learning experiences.
+            </p>
+            <div class="hero-buttons">
+                <a href="courses.html" class="btn btn-primary">Explore Courses</a>
+                <a href="#contact" class="btn btn-outline">Get Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section - Enhanced with Countdown -->
+    <!-- Offers Section - Updated Version -->
+    <section class="offers" id="offers">
+        <div class="section-title">
+            <h2>Limited Time Offers</h2>
+            <p>Special discounts on our most popular courses. Enroll today before prices increase!</p>
+            <div class="divider"></div>
+
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div class="offer-badge">50% OFF</div>
+                <div class="offer-img">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Web Development Course" />
+                </div>
+                <div class="offer-details">
+                    <h3 class="offer-title">Full Stack Web Development</h3>
+                    <div class="offer-meta">
+                        <div class="offer-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.8 </span>
+                        </div>
+                        <span class="course-duration"><i class="far fa-clock"></i> 10 Weeks</span>
+                    </div>
+                    <p class="offer-desc">
+                        Master front-end and back-end development with HTML, CSS, JavaScript, Node.js and React.
+                    </p>
+                    <div class="offer-price">
+                        <span class="current-price">$249</span>
+                        <span class="original-price">$500</span>
+                        <span class="discount">Save $251</span>
+                    </div>
+                    <a href="courses.html" class="btn btn-primary offer-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-badge">35% OFF</div>
+                <div class="offer-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Data Science Course" />
+                </div>
+                <div class="offer-details">
+                    <h3 class="offer-title">Data Science Professional</h3>
+                    <div class="offer-meta">
+                        <div class="offer-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9 </span>
+                        </div>
+                        <span class="course-duration"><i class="far fa-clock"></i> 12 Weeks</span>
+                    </div>
+                    <p class="offer-desc">
+                        Learn Python, SQL, Machine Learning and Data Visualization with real-world projects.
+                    </p>
+                    <div class="offer-price">
+                        <span class="current-price">$449</span>
+                        <span class="original-price">$690</span>
+                        <span class="discount">Save $241</span>
+                    </div>
+                    <a href="courses.html" class="btn btn-primary offer-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-badge">30% OFF</div>
+                <div class="offer-img">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Digital Marketing Course" />
+                </div>
+                <div class="offer-details">
+                    <h3 class="offer-title">Digital Marketing Mastery</h3>
+                    <div class="offer-meta">
+                        <div class="offer-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.7 </span>
+                        </div>
+                        <span class="course-duration"><i class="far fa-clock"></i> 8 Weeks</span>
+                    </div>
+                    <p class="offer-desc">
+                        Comprehensive training in SEO, Social Media, PPC, Email Marketing and Analytics.
+                    </p>
+                    <div class="offer-price">
+                        <span class="current-price">$119</span>
+                        <span class="original-price">$399</span>
+                        <span class="discount">Save $220</span>
+                    </div>
+                    <a href="courses.html" class="btn btn-primary offer-btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section - Enhanced -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>Have questions? Our team is ready to help you with any inquiries.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>
+                    We're here to help you with any questions about our courses, enrollment process,
+                    or career guidance. Reach out to us through any of these channels.
+                </p>
+
+                <div class="contact-details">
+                    <!--<div class="contact-item">
+        <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-text">
+            <h4>Our Location</h4>
+            <p>123 Education Street, Learning City</p>
+        </div>
+           <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>-->
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone Number</h4>
+                            <p>+962-782212636</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Address</h4>
+                            <p>info@Skillovaacademy.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>About Skill ova</h3>
+
+                <p>
+                    Skillova Academy is a premier online learning platform offering professional
+                    courses designed to help you advance your career with industry-relevant skills.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="#">Instructors</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Skillova Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Enhanced Chatbot -->
+    <div id="chatbot-container" onclick="toggleChatbot()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div id="chatbot-box">
+        <header>
+            <span>Need Help?</span>
+            <button onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+        </header>
+        <div class="chat-content" id="chat-content">
+            <div class="chat-message" style="animation-delay: 0.1s;">
+                <p class="bot-message">Hello! I'm Skillova Assistant. How can I help you today?</p>
+            </div>
+            <div class="chat-message" style="animation-delay: 0.3s;">
+                <p class="bot-message">You can ask me about courses, pricing, or enrollment process.</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Highlight active section
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}` ||
+                    (current === '' && link.getAttribute('href') === 'skillova.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Chatbot functionality
+        function toggleChatbot() {
+            const chatbotBox = document.getElementById('chatbot-box');
+            chatbotBox.classList.toggle('active');
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+
+            if (message) {
+                // Add user message
+                const chatContent = document.getElementById('chat-content');
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message';
+                userMessage.style.animationDelay = '0.1s';
+                userMessage.innerHTML = `<p class="user-message">${message}</p>`;
+                chatContent.appendChild(userMessage);
+
+                // Clear input
+                userInput.value = '';
+
+                // Scroll to bottom
+                chatContent.scrollTop = chatContent.scrollHeight;
+
+                // Simulate bot typing
+                setTimeout(() => {
+                    const typingIndicator = document.createElement('div');
+                    typingIndicator.className = 'chat-message';
+                    typingIndicator.innerHTML = `<p class="bot-message" style="color: var(--text-light); font-style: italic;">Typing...</p>`;
+                    chatContent.appendChild(typingIndicator);
+                    chatContent.scrollTop = chatContent.scrollHeight;
+
+                    // Remove typing indicator and show response after delay
+                    setTimeout(() => {
+                        chatContent.removeChild(typingIndicator);
+
+                        const replies = [
+                            "I can help with that. Would you like information about our courses?",
+                            "Our team can assist with that. Would you like me to connect you?",
+                            "For detailed course information, visit our Courses page.",
+                            "Registration is simple! Would you like me to guide you?",
+                            "We offer flexible payment options. Which course interests you?"
+                        ];
+                        const reply = replies[Math.floor(Math.random() * replies.length)];
+
+                        const botMessage = document.createElement('div');
+                        botMessage.className = 'chat-message';
+                        botMessage.style.animationDelay = '0.1s';
+                        botMessage.innerHTML = `<p class="bot-message">${reply}</p>`;
+                        chatContent.appendChild(botMessage);
+
+                        // Scroll to bottom
+                        chatContent.scrollTop = chatContent.scrollHeight;
+                    }, 1500);
+                }, 500);
+            }
+        }
+
+        // Handle Enter key press
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            setTimeout(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.disabled = false;
+
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'chat-message';
+                    successMessage.style.animationDelay = '0.1s';
+                    successMessage.innerHTML = `
+                                        <p class="bot-message">
+                                            Thank you for your message! Our team will contact you soon.
+                                        </p>
+                                    `;
+                    document.getElementById('chat-content').appendChild(successMessage);
+                }, 2000);
+            }, 1500);
+        });
+
+        // Countdown Timer Script
+        function updateCountdown() {
+            // Set the date we're counting down to (3 days from now)
+            const countDownDate = new Date();
+            countDownDate.setDate(countDownDate.getDate() + 3);
+            countDownDate.setHours(23, 59, 59, 0);
+
+            // Update the countdown every 1 second
+            const x = setInterval(function () {
+                // Get today's date and time
+                const now = new Date().getTime();
+
+                // Find the distance between now and the countdown date
+                const distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result
+                document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+                // If the countdown is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("days").innerHTML = "00";
+                    document.getElementById("hours").innerHTML = "00";
+                    document.getElementById("minutes").innerHTML = "00";
+                    document.getElementById("seconds").innerHTML = "00";
+
+                    // Update all badges to "EXPIRED"
+                    document.querySelectorAll('.offer-badge').forEach(badge => {
+                        badge.textContent = "EXPIRED";
+                        badge.style.background = "#6b7280";
+                        badge.style.animation = "none";
+                    });
+
+                    // Disable enroll buttons
+                    document.querySelectorAll('.offer-btn').forEach(btn => {
+                        btn.textContent = "Offer Expired";
+                        btn.style.background = "#e5e7eb";
+                        btn.style.color = "#6b7280";
+                        btn.style.cursor = "not-allowed";
+                        btn.onclick = function (e) {
+                            e.preventDefault();
+                        };
+                    });
+                }
+            }, 1000);
+        }
+
+        // Start the countdown when page loads
+        window.addEventListener('load', updateCountdown);
+
+        // Animate elements when they come into view
+        const animateOnScroll = function () {
+            const elements = document.querySelectorAll('.offer-card, .contact-form, .contact-item');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        // Run animation check on scroll and load
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
